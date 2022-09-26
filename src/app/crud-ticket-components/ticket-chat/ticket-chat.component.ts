@@ -18,6 +18,7 @@ export class TicketChatComponent implements OnInit {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   descriptionFormControl = new FormControl('', [Validators.required]);
+  noSpacesRegex = /.*\S.*/;
 
   public allUsers$: Observable<DocumentData[]>
   ticket: any = this.ticketService.ticketDefault();

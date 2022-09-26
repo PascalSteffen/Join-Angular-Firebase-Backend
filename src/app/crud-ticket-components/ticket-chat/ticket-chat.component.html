@@ -42,8 +42,8 @@
     <form #myForm="ngForm" action="">
       <div *ngIf="authService.userData as user">
         <div class="chat-message-container d-flex align-items-end">
-          <textarea required type="text" name="description" [(ngModel)]="newMessage" pattern="[a-zA-Z0-9-.,+?! ]*"
-            matInput></textarea>
+          <textarea required type="text" name="description" [(ngModel)]="newMessage" pattern="[a-zA-Z0-9-.,+?!
+          ]*" matInput></textarea>
           <div class="btn-design">
             <button [disabled]="myForm.invalid" (click)="newMessages(user.displayName, newMessage)" mat-icon-button
               color="primary" aria-label="Example icon button with a home icon">

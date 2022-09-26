@@ -14,7 +14,8 @@
     <mat-form-field class="mb-4" appearance="outline">
       <mat-label>Description</mat-label>
       <textarea type="text" name="description" [(ngModel)]="newMessage" matInput placeholder="Enter a Description"
-        required pattern="[a-zA-Z0-9-.,+?! ]*"></textarea>
+        required pattern="[a-zA-Z0-9-.,+?!
+        ]*"></textarea>
       <mat-error *ngIf="descriptionFormControl.hasError('required')">
         This field is <strong>required</strong> and only allowed with the following characters <strong>
           [a-zA-Z0-9-.,+?! ] </strong>
