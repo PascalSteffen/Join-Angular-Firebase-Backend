@@ -1,0 +1,76 @@
+<mat-drawer-container *ngIf="authService.userData as user" class="example-container" autosize>
+  <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
+    <div class="sidenav-flex">
+      <img src="../../assets/img/logowhite.png" alt="">
+      <div class="sidenav-style">
+        <ul class="my-5">
+          <li routerLink="summary" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">event</mat-icon>Summary
+          </li>
+          <li routerLink="board" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">dashboard</mat-icon>Board
+          </li>
+          <li routerLink="add-task" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">edit_calendar</mat-icon>Add Task
+          </li>
+          <li routerLink="task-history" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">manage_history</mat-icon>Task-History
+          </li>
+          <li routerLink="team" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">contact_page</mat-icon>Team
+          </li>
+          <li routerLink="tickets" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">live_help</mat-icon>
+            <span matBadge="{{ticketService.allTicketsLength}}" matBadgeOverlap="false"> Tickets</span>
+          </li>
+        </ul>
+        <ul>
+          <li routerLink="imprint" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">contact_support</mat-icon>Imprint
+          </li>
+          <li routerLink="privacy" routerLinkActive="activeRoute" class="py-3">
+            <mat-icon class="me-2">privacy_tip</mat-icon>Privacy
+          </li>
+        </ul>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="d-flex justify-content-end">
+      <div class="btn-design">
+        <div>
+          <button class="mat-menu-responsive" [matMenuTriggerFor]="responsive" matTooltip="Navigation" mat-mini-fab
+            color="primary" aria-label="Example icon button with a delete icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <mat-menu #responsive="matMenu">
+            <button routerLink="summary" mat-menu-item>Summary</button>
+            <button routerLink="board" mat-menu-item>Board</button>
+            <button routerLink="add-task" mat-menu-item>Add Task</button>
+            <button routerLink="task-history" mat-menu-item>Task-History</button>
+            <button routerLink="team" mat-menu-item>Team</button>
+            <button matBadgeColor="accent" routerLink="tickets" mat-menu-item>Tickets</button>
+            <button routerLink="imprint" mat-menu-item>Imprint</button>
+            <button routerLink="privacy" mat-menu-item>Privacy</button>
+          </mat-menu>
+        </div>
+        <div>
+          <button [matMenuTriggerFor]="profil" matTooltip="Userprofil" mat-mini-fab color="primary"
+            aria-label="Example icon button with a delete icon">
+            <mat-icon>person</mat-icon>
+          </button>
+          <mat-menu #profil="matMenu">
+            <button (click)="openEditUser()" mat-menu-item>Edit Profil</button>
+            <button class="isAdmin" (click)="authService.SignOut()" mat-menu-item>Logout</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</mat-drawer-container>

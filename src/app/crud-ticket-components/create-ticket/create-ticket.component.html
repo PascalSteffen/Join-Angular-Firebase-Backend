@@ -1,0 +1,31 @@
+<form #myForm="ngForm" *ngIf="authService.userData as user" action="" class="form-container flex column">
+  <h1 class="d-flex justify-content-center" mat-dialog-title>Create a ticket</h1>
+  <div class="d-flex flex-column">
+    <mat-form-field class="mb-4" appearance="outline">
+      <mat-label>Title</mat-label>
+      <input type="text" name="title" [(ngModel)]="ticket.title" matInput placeholder="Enter a Title"
+        pattern="[a-zA-Z0-9-.,+?! ]*" required>
+      <mat-error *ngIf="titleFormControl.hasError('required')">
+        This field is <strong>required</strong> and only allowed with the following characters <strong>
+          [a-zA-Z0-9-.,+?! ] </strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mb-4" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea type="text" name="description" [(ngModel)]="newMessage" matInput placeholder="Enter a Description"
+        required pattern="[a-zA-Z0-9-.,+?! ]*"></textarea>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">
+        This field is <strong>required</strong> and only allowed with the following characters <strong>
+          [a-zA-Z0-9-.,+?! ] </strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="border mb-2"></div>
+
+  <div class="d-flex justify-content-end">
+    <button [disabled]="myForm.invalid" [mat-dialog-close]="true" (click)="newTicket(user.displayName, newMessage)"
+      type="submit" class="submit-btn-design" mat-flat-button color="primary">Create Ticket</button>
+  </div>
+</form>

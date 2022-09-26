@@ -1,0 +1,31 @@
+<div class="row d-flex align-items-center top-container">
+  <h1 class="col-md-auto">Team</h1>
+  <h1 class="col-md-auto color cut">|</h1>
+  <h2 class="col col-lg info">Better with a team</h2>
+  <div class="col-md-auto d-flex align-items-center input-container">
+    <mat-form-field class="col-md-auto" appearance="outline">
+      <mat-label class="d-flex align-items-center">
+        <mat-icon>search</mat-icon> Find User
+      </mat-label>
+      <input [(ngModel)]="name" matInput placeholder="Find User">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="loading-position" *ngIf="!loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="loading" class="d-flex main-content mt-5">
+  <div class="d-flex team-container flex-column px-2">
+    <div class="row d-flex team-container-child align-items-center px-5 border-bottom"
+      (click)="openSetUnsetAdminDialog(user)"
+      *ngFor="let user of allUsers$ | async | searchfilter:name | sortBy: 'displayName'">
+      <mat-icon>person</mat-icon>
+      <div class="col d-flex flex-column">
+        <h1 [class.isAdmin]=" user['admin']">{{user['displayName']}}</h1>
+        <span class="email-width">{{user['email']}}</span>
+      </div>
+    </div>
+  </div>
+</div>

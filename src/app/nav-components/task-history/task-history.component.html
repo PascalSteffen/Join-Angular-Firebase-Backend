@@ -1,0 +1,78 @@
+<div class="row d-flex align-items-center top-container">
+  <h1 class="col">Task-History</h1>
+  <div class="col-md-auto d-flex align-items-center input-container">
+    <mat-form-field class="col-md-auto" appearance="outline">
+      <mat-label class="d-flex align-items-center">
+        <mat-icon>search</mat-icon> Find Task
+      </mat-label>
+      <input [(ngModel)]="searchTodo" matInput placeholder="Find Task">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="loading-position" *ngIf="!loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="d-flex justify-content-center no-task-message" *ngIf="loading && taskService.taskHistory == 0">
+  <h1>No tasks found in history.</h1>
+</div>
+
+<div *ngIf="loading && taskService.taskHistory >= 1" class="height mt-5">
+  <div class="board-container d-flex">
+    <div (click)="openDialog(task)"
+      *ngFor="let task of allTasks$ | async | taskFilter:taskService.findHistoryTask | searchfilter:searchTodo | sortBy: 'priority'"
+      class="task-container my-3 me-4">
+
+
+      <div class="px-3 py-3 d-flex row mx-0 mobile-categories">
+
+        <div class="d-flex justify-content-center name-categorie col my-2 mx-2">
+          <span>{{task['task'].assignTo}}</span>
+        </div>
+
+        <div *ngIf="task['task'].categorie == 'Sales'"
+          class="d-flex justify-content-center sales-categorie col my-2 mx-2">
+          <span>{{task['task'].categorie}}</span>
+        </div>
+
+        <div *ngIf="task['task'].categorie == 'Backoffice'"
+          class="d-flex justify-content-center backoffice-categorie col my-2 mx-2">
+          <span>{{task['task'].categorie}}</span>
+        </div>
+
+        <div *ngIf="task['task'].categorie == 'Marketing'"
+          class="d-flex justify-content-center marketing-categorie col my-2 mx-2">
+          <span>{{task['task'].categorie}}</span>
+        </div>
+      </div>
+
+      <div class="row title-description-container d-flex flex-column px-3">
+        <h3 class="col wrap-text">{{task['task'].title}}</h3>
+        <span class="col wrap-text">{{task['task'].description}}</span>
+      </div>
+
+      <div class="row px-3 py-3">
+        <div class="col d-flex flex-column">
+          <span class="color">Upcoming Deadline</span>
+          <span>{{task['task'].date | date:'MMMM d, y'}}</span>
+        </div>
+
+        <div class="col d-flex flex-column align-items-end mobile-change">
+          <div class="d-flex align-items-center flex-column">
+            <span class="color">Priority</span>
+            <mat-icon class="urgent-priority" *ngIf="task['task'].priority == 'Urgent'">
+              keyboard_double_arrow_up
+            </mat-icon>
+
+            <mat-icon class="medium-priority" *ngIf="task['task'].priority == 'Medium'">drag_handle
+            </mat-icon>
+
+            <mat-icon class="low-priority" *ngIf="task['task'].priority == 'Low'">keyboard_double_arrow_down
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

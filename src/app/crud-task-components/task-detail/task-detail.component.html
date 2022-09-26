@@ -1,0 +1,113 @@
+<div class="d-flex justify-content-between top-menu">
+  <button mat-flat-button mat-button mat-dialog-close>
+    <mat-icon>clear</mat-icon>Close
+  </button>
+  <button mat-flat-button mat-button (click)="openEditDialog()" mat-dialog-close>
+    <mat-icon class="me-2">edit</mat-icon>Edit
+  </button>
+</div>
+
+<div *ngIf="authService.userData as user">
+
+  <mat-dialog-content class="mat-typography border">
+    <div class="board-container d-flex flex-column">
+      <div class="px-3 py-3 d-flex row mx-0 mobile-categories">
+
+        <div class="d-flex justify-content-center name-categorie col mx-2 my-2">
+          <span>{{task.assignTo}}</span>
+        </div>
+
+        <div *ngIf="task.categorie == 'Sales'" class="d-flex justify-content-center sales-categorie col my-2 mx-2">
+          <span>{{task.categorie}}</span>
+        </div>
+
+        <div *ngIf="task.categorie == 'Backoffice'"
+          class="d-flex justify-content-center backoffice-categorie my-2 mx-2">
+          <span>{{task.categorie}}</span>
+        </div>
+
+        <div *ngIf="task.categorie == 'Marketing'" class="d-flex justify-content-center marketing-categorie my-2 mx-2">
+          <span>{{task.categorie}}</span>
+        </div>
+      </div>
+
+      <div class="row title-description-container d-flex flex-column px-3">
+        <h3 class="col wrap-text">{{task.title}}</h3>
+        <span class="col wrap-text">{{task.description}}</span>
+      </div>
+
+
+
+      <div class="row px-3 py-3">
+        <div class="col d-flex flex-column deadline-container">
+          <span class="color">Upcoming Deadline</span>
+          <span>{{task.date | date:'MMMM d, y'}}</span>
+        </div>
+
+        <div class="col d-flex flex-column align-items-center mobile-change">
+          <div class="d-flex align-items-center flex-column">
+            <span class="color">Priority</span>
+            <mat-icon class="urgent-priority" *ngIf="task.priority == 'Urgent'">
+              keyboard_double_arrow_up
+            </mat-icon>
+
+            <mat-icon class="medium-priority" *ngIf="task.priority == 'Medium'">drag_handle
+            </mat-icon>
+
+            <mat-icon class="low-priority" *ngIf="task.priority == 'Low'">keyboard_double_arrow_down
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+
+  <div>
+    <mat-dialog-actions class="d-flex justify-content-center">
+      <div *ngFor="let currentUser of allUsers$ | async">
+        <div *ngIf="user.uid == currentUser['userId']" class="d-flex buttons">
+
+          <div>
+            <button class="me-3" [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
+              color="warn" (click)="openDeleteDialog()" mat-dialog-close>
+              <mat-icon class="me-2">delete</mat-icon>Delete
+            </button>
+          </div>
+
+          <div>
+            <button class="btn-design" mat-flat-button *ngIf="task.todo == true" mat-button
+              (click)="openPushtoNextDialog()" [mat-dialog-close]="true" cdkFocusInitial color="primary">
+              <mat-icon class="me-2">arrow_forward</mat-icon>Push to In Progress
+            </button>
+
+
+            <button class="btn-design" mat-flat-button *ngIf="task.inProgress == true" mat-button
+              (click)="openPushtoNextDialog()" [mat-dialog-close]="true" cdkFocusInitial color="primary">
+              <mat-icon class="me-2">arrow_forward</mat-icon>Push to Awaiting Feedback
+            </button>
+
+            <button class="btn-design" [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']"
+              mat-flat-button *ngIf="task.awaitingFeedback == true" mat-button (click)="openPushtoNextDialog()"
+              [mat-dialog-close]="true" cdkFocusInitial color="primary">
+              <mat-icon class="me-2">arrow_forward</mat-icon>Push to Done
+            </button>
+
+            <button class="btn-design" [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']"
+              mat-flat-button *ngIf="task.done == true" mat-button (click)="openPushtoNextDialog()"
+              [mat-dialog-close]="true" cdkFocusInitial color="primary">
+              <mat-icon class="me-2">arrow_forward</mat-icon>Push to History
+            </button>
+
+            <button class="btn-design" [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']"
+              mat-flat-button *ngIf="task.history == true" mat-button (click)="openPushtoNextDialog()"
+              [mat-dialog-close]="true" cdkFocusInitial color="primary">
+              <mat-icon class="me-2">arrow_forward</mat-icon>Push to Board
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-dialog-actions>
+  </div>
+
+</div>

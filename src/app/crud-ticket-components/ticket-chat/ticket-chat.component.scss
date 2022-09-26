@@ -1,0 +1,121 @@
+$colorDark: rgb(42, 54, 71);
+$colorLight: rgb(41, 171, 226);
+
+.top-container {
+  margin-top: 15px;
+}
+
+.loading-position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ::ng-deep .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $colorDark  !important;
+  }
+
+}
+
+.main-content {
+  height: calc(100% - 200px);
+}
+
+.chat-container {
+  max-width: 500px;
+  height: calc(100% - 200px);
+
+
+  .all-message-container {
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    padding: 16px 0px;
+
+    .text-message {
+      border: 1px solid lightgray;
+      border-radius: 10px;
+      padding: 16px;
+      word-wrap: break-word;
+    }
+
+    h3 {
+      margin-bottom: 0;
+      color: lightgray;
+      font-size: 14px;
+    }
+  }
+
+  .chat-message-container {
+    width: 100%;
+    height: auto;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 16px;
+
+    .btn-design {
+      button {
+
+        &:enabled {
+          mat-icon {
+            color: $colorDark  !important;
+          }
+        }
+
+        &:disabled {
+          mat-icon {
+            color: lightgray;
+          }
+        }
+      }
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      resize: none;
+      border: none;
+      background-color: transparent !important;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+}
+
+.assign-container {
+  h3 {
+    margin: 0 !important;
+  }
+}
+
+@media(max-width: 900px) {
+
+  .top-container {
+    text-align: center !important;
+    justify-content: center !important;
+    flex-direction: column;
+  }
+
+  .mobile {
+    justify-content: center;
+  }
+
+  .info {
+
+    text-align: center;
+  }
+
+  .cut {
+    display: none;
+  }
+
+}
+
+@media(max-width: 768px) {
+  .chat-container {
+    max-width: 100%;
+  }
+}

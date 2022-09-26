@@ -1,0 +1,120 @@
+$colorDark: rgb(42, 54, 71);
+$colorLight: rgb(41, 171, 226);
+
+.top-menu {
+  margin-top: -11px;
+  margin-bottom: 8px;
+}
+
+.board-container {
+
+  .task-container {
+    width: 340px;
+    height: auto !important;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    background: white;
+
+    &:hover {
+      color: white;
+      background: $colorDark;
+      transition: all 225ms ease-in-out;
+
+      .name-categorie {
+        transition: all 225ms ease-in-out;
+        background-color: $colorLight  !important;
+      }
+    }
+
+    .wrap-text {
+      word-break: break-all;
+      width: 175px;
+    }
+  }
+
+  .title-description-container {
+    word-break: break-all;
+    max-width: 360px;
+
+    h3 {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+}
+
+.low-priority {
+  color: rgb(115, 255, 0) !important;
+}
+
+.medium-priority {
+  color: rgb(255, 145, 0) !important;
+
+}
+
+.urgent-priority {
+  color: rgb(255, 0, 0) !important;
+}
+
+.sales-categorie {
+  background-color: orangered !important;
+  width: 100px;
+  border-radius: 10px;
+  color: white;
+  padding: 4px;
+}
+
+.backoffice-categorie {
+  background-color: rgb(0, 56, 255) !important;
+  width: 100px;
+  border-radius: 10px;
+  color: white;
+  padding: 4px;
+}
+
+.marketing-categorie {
+  background-color: rgb(255, 199, 1) !important;
+  width: 100px;
+  border-radius: 10px;
+  color: white;
+  padding: 4px;
+}
+
+.name-categorie {
+  background-color: $colorDark;
+  transition: all 225ms ease-in-out;
+  width: 100px;
+  border-radius: 10px;
+  color: white;
+  padding: 4px;
+}
+
+
+
+.btn-design {
+  background-color: $colorDark;
+}
+
+@media(max-width: 450px) {
+  .buttons {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin: 0.5rem 0 !important;
+    }
+  }
+
+  .mobile-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .deadline-container,
+  .title-description-container {
+    text-align: center;
+  }
+}

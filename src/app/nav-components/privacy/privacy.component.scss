@@ -1,0 +1,39 @@
+.privacy-container {
+  transition: all 225ms ease-in-out;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  a {
+    word-wrap: break-word;
+  }
+}
+
+p {
+  word-wrap: break-word;
+}
+
+@media(max-width: 768px) {
+  .privacy-container {
+    text-align: center;
+  }
+}
+
+@media (max-width: 580px) {
+
+  .privacy-container {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+  }
+}

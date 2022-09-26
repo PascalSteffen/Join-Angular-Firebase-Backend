@@ -1,0 +1,15 @@
+.full-width {
+  width: 100%;
+}
+
+@media(max-width: 580px) {
+  .mobile {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .no-margin {
+    margin-right: 0 !important;
+  }
+}

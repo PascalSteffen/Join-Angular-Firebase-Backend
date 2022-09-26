@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "join-68aa4": {
+      "hosting": {
+        "join-angular": [
+          "join-68aa4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "join-68aa4"
+  }
+}

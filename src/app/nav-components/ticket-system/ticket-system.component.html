@@ -1,0 +1,52 @@
+<div class="row d-flex align-items-center top-container">
+  <h1 class="col-md-auto">Support</h1>
+  <h1 class="col-md-auto color cut">|</h1>
+  <h2 class="col col-lg info">Write an Ticket</h2>
+  <div class="col-md-auto d-flex align-items-center input-container">
+    <button class="col-md-auto mb-3 me-3" (click)="openCreateTicketDialog()" mat-mini-fab matTooltipPosition="above"
+      matTooltip="Create Ticket">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-form-field class="col-md-auto" appearance="outline">
+      <mat-label class="d-flex align-items-center">
+        <mat-icon>search</mat-icon> Find Ticket
+      </mat-label>
+      <input [(ngModel)]="name" matInput placeholder="Find Ticket">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="loading-position" *ngIf="!loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="loading && ticketService.allTicketsLength == 0">
+  <h1>No active tickets on board.</h1>
+</div>
+
+<mat-card *ngIf="loading && ticketService.allTicketsLength >= 1" class="mt-5 ticket-container">
+  <div class="row headline-container border-bottom pb-3">
+    <span class="col-1">No.</span>
+    <span class="col mobile">Date</span>
+    <span class="col">From User</span>
+    <span class="col">Title</span>
+    <span class="col mobile">Assigned To</span>
+  </div>
+  <div class="ticket-content-container">
+    <div *ngIf="authService.userData as user">
+      <div *ngFor="let users of allUsers$ | async">
+        <div *ngIf="user.uid == users['userId']">
+          <div class="row py-3 border-bottom ticket-content-container-child"
+            (click)="openTicket(ticket['ticket'].from, user.displayName, user.uid, users['userId'], users['admin'], ticket.ticketId)"
+            *ngFor="let ticket of allTickets$ | async | searchfilter:name | sortTicket: 'no'">
+            <span class="col-1">{{ticket['ticket'].no}}.</span>
+            <span class="col mobile">{{ticket['ticket'].date | date: 'MMM d, y, h:mm:ss a'}}</span>
+            <span class="col">{{ticket['ticket'].from}}</span>
+            <span class="col">{{ticket['ticket'].title}}</span>
+            <span class="col mobile">{{ticket['ticket'].assignTo}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

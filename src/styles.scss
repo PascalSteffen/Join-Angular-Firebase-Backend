@@ -1,1 +1,102 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'material-icons/iconfont/material-icons.scss';
+@import "~bootstrap/dist/css/bootstrap.css";
+
+$colorDark: rgb(42, 54, 71);
+$colorLight: rgb(41, 171, 226);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.top-container {
+  margin-top: 15px;
+
+  h1 {
+    font-weight: bold !important;
+    font-size: 50px !important;
+  }
+
+  h2 {
+    margin: 0 0 8px !important;
+  }
+
+  mat-icon {
+    font-size: 22px !important;
+  }
+
+  button {
+    background-color: $colorLight  !important;
+  }
+
+}
+
+.color {
+  color: $colorLight  !important;
+}
+
+
+.d-none {
+  display: none;
+}
+
+@media(min-height: 1080px) {
+
+  .form-container,
+  .side-container,
+  .height {
+    height: calc(100% - 142px) !important;
+  }
+}
+
+@media(min-width: 769px) {
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px !important;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $colorDark  !important;
+    border-radius: 25px !important;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #131111 !important;
+  }
+}
+
+@media(max-width: 768px) {
+
+  .name-categorie,
+  .sales-categorie,
+  .backoffice-categorie,
+  .marketing-categorie {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .top-container,
+  .name-container,
+  .current-user {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
+.isAdmin {
+  color: rgb(237, 82, 105) !important;
+}

@@ -1,0 +1,89 @@
+<form #myForm="ngForm" action="" class="form-container">
+
+  <div>
+    <mat-form-field class="my-1 full-width" appearance="outline">
+      <mat-label>Title</mat-label>
+      <input type="text" name="title" [(ngModel)]="task.title" matInput matInput placeholder="Enter a Title" required
+        pattern="[a-zA-Z0-9-.,+?! ]*">
+      <mat-error *ngIf="titleFormControl.hasError('required')">
+        This field is <strong>required</strong> and only allowed with the following characters <strong>
+          [a-zA-Z0-9-.,+?! ] </strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="my-1 full-width" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea type="text" name="description" [(ngModel)]="task.description" matInput placeholder="Enter a Description"
+        required pattern="[a-zA-Z0-9-.,+?! ]*"></textarea>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">
+        This field is <strong>required</strong> and only allowed with the following characters <strong>
+          [a-zA-Z0-9-.,+?! ] </strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="mobile">
+    <mat-form-field class="my-1 me-2 no-margin" appearance="outline">
+      <mat-label>Categorie</mat-label>
+      <mat-select name="categorie" [(ngModel)]="task.categorie" required>
+        <mat-option value="Sales">Sales</mat-option>
+        <mat-option value="Backoffice">Backoffice</mat-option>
+        <mat-option value="Marketing">Marketing</mat-option>
+      </mat-select>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">
+        Categorie is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="my-1" appearance="outline">
+      <mat-label>Assigned to</mat-label>
+      <mat-select name="assignTo" [(ngModel)]="task.assignTo" required>
+        <mat-option *ngFor="let user of allUsers$ | async" value="{{user['displayName']}}">{{user['displayName']}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="assignToFormControl.hasError('required')">
+        Assign to is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="my-1 full-width" appearance="outline">
+      <mat-label>{{task.date | date:'MMMM d, y'}}</mat-label>
+      <input name="date" [(ngModel)]="date" matInput placeholder="dd/mm/yyyy" [matDatepicker]="picker1" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-error *ngIf="dueDateFormControl.hasError('required')">
+        Date is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="my-1 full-width" appearance="outline">
+      <mat-label>Priority</mat-label>
+      <mat-select name="priority" [(ngModel)]="task.priority" required>
+        <mat-option value="Urgent">Urgent</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Low">Low</mat-option>
+      </mat-select>
+      <mat-error *ngIf="priorityFormControl.hasError('required')">
+        Priority is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-dialog-actions class="d-flex justify-content-between mobile">
+    <button mat-flat-button mat-button mat-dialog-close>
+      <mat-icon class="me-2">close</mat-icon>Close
+    </button>
+    <button mat-flat-button color="primary" [class.btnDisabled]="!myForm.valid" [disabled]="!myForm.valid"
+      [mat-dialog-close]="myForm" (click)="firebaseService.updateTask(this.taskId, this.date, this.task)" type="submit"
+      class="submit-btn-design">
+      <mat-icon class="me-2">sync_alt</mat-icon>Update Task
+    </button>
+  </mat-dialog-actions>
+
+</form>

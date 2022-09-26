@@ -1,0 +1,77 @@
+<div class="row d-flex align-items-center top-container">
+  <h1 class="col-md-auto">Summary</h1>
+  <h1 class="col-md-auto color cut">|</h1>
+  <h2 class="col col-lg info">Everythink in a nutshell</h2>
+</div>
+
+<div class="name-container d-flex align-items-center row mt-5 mx-4">
+  <h2 class="col-md-auto">{{currentTime}},</h2>
+  <div *ngIf="authService.userData as user" class="d-flex align-items-center current-user col">
+    <h1 class="me-3">{{(user.displayName) ? user.displayName:
+      'Set your Username'}}</h1>
+    <!--     <button matTooltip="Edit your Username" matTooltipPosition="above" Action (click)="openEditUsernameDialog()"
+      mat-mini-fab color="primary">
+      <mat-icon>edit</mat-icon>
+    </button> -->
+  </div>
+</div>
+
+<div class="loading-position" *ngIf="!loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="loading" class="main-content mt-3">
+
+  <div class="mobile" routerLink="/board">
+    <div class="row d-flex justify-content-center">
+      <div class="d-flex justify-content-center align-items-center flex-column mx-4 my-3 col first-row-container">
+        <h1>{{taskService.allTodosOnBoard}}</h1>
+        <span>Task in Board</span>
+      </div>
+      <div class="d-flex justify-content-center align-items-center flex-column mx-4 my-3 col first-row-container">
+        <h1>{{taskService.allTaskInProgress}}</h1>
+        <span>Task in Progress</span>
+      </div>
+      <div class="d-flex justify-content-center align-items-center flex-column mx-4 my-3 col first-row-container">
+        <h1>{{taskService.allTaskAwaitingFeedback}} </h1>
+        <span>Awaiting Feedback</span>
+      </div>
+    </div>
+
+    <div class="my-4 row second-row-container">
+      <div class="col d-flex align-items-center justify-content-center border-right child-1">
+        <div>
+          <mat-icon>keyboard_double_arrow_up</mat-icon>
+        </div>
+        <div class="d-flex align-items-center flex-column">
+          <h1>{{taskService.priorityUrgent}}</h1>
+          <span>Urgent</span>
+        </div>
+      </div>
+      <div class="col d-flex align-items-center justify-content-center child-2">
+        <div class="d-flex flex-column align-items-center">
+          <h3 *ngIf="taskService.nextImportantDate[0]">{{taskService.nextImportantDate[0] | date:'MMMM d, y'}}</h3>
+          <h3 *ngIf="!taskService.nextImportantDate[0]">-</h3>
+          <span>Next upcoming Deadline</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="third-row-container my-4 row">
+      <div class="child-1 d-flex justify-content-center align-items-center mx-3 my-3 col">
+        <mat-icon class="d-flex justify-content-center align-items-center">edit_note</mat-icon>
+        <div class="child-2 d-flex flex-column align-items-center">
+          <h1>{{taskService.allTaskTodo}}</h1>
+          <span>Todo</span>
+        </div>
+      </div>
+      <div class="child-1 d-flex justify-content-center align-items-center mx-3 my-3 col">
+        <mat-icon class="d-flex justify-content-center align-items-center">done_all</mat-icon>
+        <div class="child-2 d-flex flex-column align-items-center ">
+          <h1>{{taskService.allTaskDone}}</h1>
+          <span>Done</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+$colorDark: rgb(42, 54, 71);
+$colorLight: rgb(41, 171, 226);
+
+mat-drawer-container {
+  position: unset;
+}
+
+.sidenav {
+  background-color: $colorDark;
+  width: 250px;
+  height: 100vh;
+  color: white;
+  padding: 64px 0;
+
+  img {
+    width: 100px;
+  }
+}
+
+.sidenav-flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sidenav-style {
+  height: calc(100vh - 255px);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 65px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    transition: all 225ms ease-in-out;
+    background-color: transparent;
+    list-style-type: none;
+
+    &:hover {
+      background-color: rgb(9, 25, 49);
+      transition: all 225ms ease-in-out;
+    }
+  }
+}
+
+.example-sidenav-content {
+  background-color: white;
+
+
+  .btn-design {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 100px;
+
+    button {
+      background-color: $colorLight;
+    }
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    padding: 32px 100px;
+    margin: 0;
+  }
+
+  .router-container {
+    padding: 64px 100px;
+    background: rgb(246, 247, 248) !important;
+    height: calc(100vh - 73px) !important;
+  }
+
+}
+
+.activeRoute {
+  background-color: rgb(9, 25, 49) !important;
+}
+
+::ng-deep .mat-badge-content {
+  background: $colorLight  !important;
+  color: white !important
+}
+
+@media(min-width: 769px) {
+  .mat-menu-responsive {
+    display: none;
+  }
+
+}
+
+@media(max-width: 768px) {
+  .sidenav {
+    display: none;
+  }
+
+  .btn-design {
+    width: 100%;
+    padding: 16px 32px !important;
+  }
+
+  .example-sidenav-content {
+
+    h2 {
+      display: none;
+    }
+  }
+
+  .router-container {
+    padding: 64px 32px !important;
+  }
+
+  .mat-menu-non-responsive {
+    display: none;
+  }
+}
+
+@media(max-width: 500px) {
+  .router-container {
+    overflow: unset !important;
+  }
+
+}
