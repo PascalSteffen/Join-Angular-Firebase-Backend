@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/shared/interfaces/task';
+import { TaskService } from 'src/app/shared/services/task-service/task.service';
 import { FirebaseService } from '../../shared/services/firebase-service/firebase.service';
 
 @Component({
@@ -11,9 +12,9 @@ import { FirebaseService } from '../../shared/services/firebase-service/firebase
 export class PushTaskComponent implements OnInit {
 
   taskId: string;
-  task: Task;
+  task: Task = this.taskService.taskDefault();
 
-  constructor(public firebaseService: FirebaseService) { }
+  constructor(public firebaseService: FirebaseService, public taskService: TaskService) { }
 
 
   ngOnInit(): void {

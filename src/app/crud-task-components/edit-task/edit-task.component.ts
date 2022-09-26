@@ -15,7 +15,7 @@ import { FirebaseService } from '../../shared/services/firebase-service/firebase
 export class EditTaskComponent implements OnInit {
 
   public allUsers$: Observable<DocumentData[]>;
-  task: Task;
+  task: Task = this.taskService.taskDefault();
   taskId: string;
   date: Date;
 

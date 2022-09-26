@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore, Firestore } from '@angular/fire/firestore';
 import { TaskFilterPipe } from './shared/pipes/filter-pipes/task-filter.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';

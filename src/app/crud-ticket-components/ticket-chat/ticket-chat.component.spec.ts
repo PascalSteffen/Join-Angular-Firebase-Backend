@@ -1,4 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 import { TicketChatComponent } from './ticket-chat.component';
 
@@ -8,9 +16,12 @@ describe('TicketChatComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TicketChatComponent ]
+      declarations: [TicketChatComponent],
+      imports: [MatDialogModule, RouterModule.forRoot([]), provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()), AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebase), MatSnackBarModule]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TicketChatComponent);
     component = fixture.componentInstance;

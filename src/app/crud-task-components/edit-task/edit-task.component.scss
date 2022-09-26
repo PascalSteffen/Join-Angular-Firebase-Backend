@@ -1,3 +1,6 @@
+$colorDark: rgb(42, 54, 71);
+$colorLight: rgb(41, 171, 226);
+
 .full-width {
   width: 100%;
 }
@@ -12,4 +15,12 @@
   .no-margin {
     margin-right: 0 !important;
   }
+}
+
+.submit-btn-design {
+  &:disabled {
+    color: lightgray !important;
+  }
+
+  background-color: $colorDark  !important;
 }

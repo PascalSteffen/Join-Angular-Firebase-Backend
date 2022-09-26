@@ -77,3 +77,9 @@ mat-card {
   }
 
 }
+
+@media(max-width: 400px) {
+  .assignTo {
+    display: none;
+  }
+}
