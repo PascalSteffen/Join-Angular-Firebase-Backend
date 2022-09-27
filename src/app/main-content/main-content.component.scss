@@ -57,12 +57,13 @@ mat-drawer-container {
 .example-sidenav-content {
   background-color: white;
 
-
   .btn-design {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 16px 100px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 
     button {
       background-color: $colorLight;

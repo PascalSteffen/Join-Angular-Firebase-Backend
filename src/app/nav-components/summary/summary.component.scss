@@ -91,8 +91,7 @@ $colorLight: rgb(41, 171, 226);
 }
 
 .second-row-container {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-right: 0 !important;
   min-height: 150px;
   max-height: auto;
   background-color: white;
