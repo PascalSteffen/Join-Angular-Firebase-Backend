@@ -8,7 +8,7 @@
       <mat-form-field class="my-2" appearance="outline">
         <mat-label>Title</mat-label>
         <input type="text" name="title" [(ngModel)]="task.title" matInput placeholder="Enter a Title" required
-          pattern="[a-zA-Z0-9-.,+?! ]*">
+          pattern="[a-zA-Z0-9-.,+?! \-_.\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]*">
         <mat-error *ngIf="titleFormControl.hasError('required')">
           This field is <strong>required</strong> and only allowed with the following characters <strong>
             [a-zA-Z0-9-.,+?! ] </strong>
@@ -35,7 +35,7 @@
       <mat-form-field class="my-2" appearance="outline">
         <mat-label>Description</mat-label>
         <textarea type="text" name="description" [(ngModel)]="task.description" matInput
-          placeholder="Enter a Description" required pattern="[a-zA-Z0-9-.,+?!
+          placeholder="Enter a Description" required pattern="[a-zA-Z0-9-.,+?! \-_.\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF
           ]*"></textarea>
         <mat-error *ngIf="descriptionFormControl.hasError('required')">
           This field is <strong>required</strong> and only allowed with the following characters <strong>

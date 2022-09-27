@@ -2,7 +2,7 @@
   <h1 class="col-md-auto">Support</h1>
   <h1 class="col-md-auto color cut">|</h1>
   <div *ngIf="loading" class="d-flex col align-items-center mobile">
-    <h2 class="col-md-auto">Ticket No. {{ticket.no}}</h2>
+    <h2 class="col-md-auto">Ticket from {{ticket.from}}</h2>
     <div *ngFor="let currentUser of allUsers$ | async">
       <button *ngIf="user.uid == currentUser['userId'] && currentUser['admin']" [matMenuTriggerFor]="ticketOptions"
         matTooltip="Ticket options" class="col-md-auto mb-2 ms-3" mat-mini-fab color="warn"
@@ -42,7 +42,7 @@
     <form #myForm="ngForm" action="">
       <div *ngIf="authService.userData as user">
         <div class="chat-message-container d-flex align-items-end">
-          <textarea required type="text" name="description" [(ngModel)]="newMessage" pattern="[a-zA-Z0-9-.,+?!
+          <textarea required type="text" name="description" [(ngModel)]="newMessage" pattern="[a-zA-Z0-9-.,+?! \-_.\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF
           ]*" matInput></textarea>
           <div class="btn-design">
             <button [disabled]="myForm.invalid" (click)="newMessages(user.displayName, newMessage)" mat-icon-button
