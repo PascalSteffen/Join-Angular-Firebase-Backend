@@ -61,11 +61,11 @@ export class SummaryComponent implements OnInit {
       this.currentTime = 'Good afternoon'
     }
 
-    if (hours >= 18 && hours < 24) {
+    if (hours >= 18 && hours < 0) {
       this.currentTime = 'Good evening'
     }
 
-    if (hours >= 24 && hours < 6) {
+    if (hours >= 0 && hours < 6) {
       this.currentTime = 'Good night'
     }
   }
