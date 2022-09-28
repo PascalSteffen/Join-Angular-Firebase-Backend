@@ -4,7 +4,7 @@
   <h2 class="col col-lg info">Everythink in a nutshell</h2>
 </div>
 
-<div class="name-container d-flex align-items-center row mt-5">
+<div class="name-container d-flex align-items-center row mt-2rem">
   <h2 class="col-md-auto">{{currentTime}},</h2>
   <div *ngIf="authService.userData as user" class="d-flex align-items-center current-user col">
     <h1 class="me-3">{{(user.displayName) ? user.displayName:
@@ -24,22 +24,22 @@
 
   <div class="mobile" routerLink="/board">
     <div class="row d-flex justify-content-center">
-      <div class="d-flex justify-content-center align-items-center flex-column me-3 my-3 col first-row-container">
+      <div class="d-flex justify-content-center align-items-center flex-column me-4 my-3 col first-row-container">
         <h1>{{taskService.allTodosOnBoard}}</h1>
         <span>Task in Board</span>
       </div>
       <div
-        class="d-flex justify-content-center align-items-center flex-column me-3 margin-right-auto my-3 col first-row-container">
+        class="d-flex justify-content-center align-items-center flex-column me-4 margin-right-auto my-3 col first-row-container">
         <h1>{{taskService.allTaskInProgress}}</h1>
         <span>Task in Progress</span>
       </div>
-      <div class="d-flex justify-content-center align-items-center me-3 flex-column my-3 col first-row-container">
+      <div class="d-flex justify-content-center align-items-center me-4 flex-column my-3 col first-row-container">
         <h1>{{taskService.allTaskAwaitingFeedback}} </h1>
         <span>Awaiting Feedback</span>
       </div>
     </div>
 
-    <div class="my-4 row second-row-container">
+    <div class="my-3 row second-row-container">
       <div class="col d-flex align-items-center justify-content-center border-right child-1">
         <div>
           <mat-icon>keyboard_double_arrow_up</mat-icon>
@@ -58,15 +58,15 @@
       </div>
     </div>
 
-    <div class="third-row-container my-4 row">
-      <div class="child-1 d-flex justify-content-center align-items-center me-3  my-3 col">
+    <div class="third-row-container row">
+      <div class="child-1 d-flex justify-content-center align-items-center me-4 my-3 col">
         <mat-icon class="d-flex justify-content-center align-items-center">edit_note</mat-icon>
         <div class="child-2 d-flex flex-column align-items-center">
           <h1>{{taskService.allTaskTodo}}</h1>
           <span>Todo</span>
         </div>
       </div>
-      <div class="child-1 d-flex justify-content-center align-items-center me-3 my-3 col">
+      <div class="child-1 d-flex justify-content-center align-items-center me-4 my-3 col">
         <mat-icon class="d-flex justify-content-center align-items-center">done_all</mat-icon>
         <div class="child-2 d-flex flex-column align-items-center ">
           <h1>{{taskService.allTaskDone}}</h1>

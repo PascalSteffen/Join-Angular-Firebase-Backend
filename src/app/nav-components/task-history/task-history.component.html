@@ -18,11 +18,11 @@
   <h1>No tasks found in history.</h1>
 </div>
 
-<div *ngIf="loading && taskService.taskHistory >= 1" class="height mt-5">
+<div *ngIf="loading && taskService.taskHistory >= 1" class="height mt-2rem">
   <div class="board-container d-flex">
     <div (click)="openDialog(task)"
       *ngFor="let task of allTasks$ | async | taskFilter:taskService.findHistoryTask | searchfilter:searchTodo | sortBy: 'priority'"
-      class="task-container my-3 me-4">
+      class="task-container my-3">
 
 
       <div class="px-3 py-3 d-flex row mx-0 mobile-categories">
@@ -47,18 +47,18 @@
         </div>
       </div>
 
-      <div class="row title-description-container d-flex flex-column px-3">
+      <div class="row title-description-container d-flex flex-column col my-2 mx-2">
         <h3 class="col wrap-text">{{task['task'].title}}</h3>
         <span class="col wrap-text">{{task['task'].description}}</span>
       </div>
 
-      <div class="row px-3 py-3">
+      <div class="row px-3 py-3 mobile-change">
         <div class="col d-flex flex-column">
           <span class="color">Upcoming Deadline</span>
           <span>{{task['task'].date | date:'MMMM d, y'}}</span>
         </div>
 
-        <div class="col d-flex flex-column align-items-end mobile-change">
+        <div class="row col d-flex align-items-end">
           <div class="d-flex align-items-center flex-column">
             <span class="color">Priority</span>
             <mat-icon class="urgent-priority" *ngIf="task['task'].priority == 'Urgent'">

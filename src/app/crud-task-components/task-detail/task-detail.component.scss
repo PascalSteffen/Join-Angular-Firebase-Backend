@@ -97,15 +97,20 @@ $colorLight: rgb(41, 171, 226);
   background-color: $colorDark;
 }
 
-@media(max-width: 450px) {
-  .buttons {
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
+@media(min-width: 471px) {
+  .mobile-button {
+    display: none !important;
+  }
+}
 
-    button {
-      margin: 0.5rem 0 !important;
-    }
+@media(max-width: 470px) {
+
+  .mobile-button {
+    display: unset !important;
+  }
+
+  .tablet-button {
+    display: none !important;
   }
 
   .mobile-categories {
@@ -113,8 +118,4 @@ $colorLight: rgb(41, 171, 226);
     align-items: center;
   }
 
-  .deadline-container,
-  .title-description-container {
-    text-align: center;
-  }
 }

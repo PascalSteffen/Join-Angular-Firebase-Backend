@@ -20,14 +20,14 @@
 
 <div *ngIf="loading && taskService.allTodosOnBoard >= 1" class="d-flex row side-container justify-content-between">
 
-  <div class="mt-5 column-container d-flex flex-column align-items-center row">
+  <div class="mt-2rem column-container d-flex flex-column align-items-center row">
     <h1 [class.noTodo]="taskService.allTaskTodo == 0">Todo</h1>
     <div class="height">
 
       <div class="board-container d-flex">
         <div (click)="openDialog(task)"
           *ngFor="let task of allTasks$ | async | taskFilter:taskService.findTodoTask | searchfilter:searchTodo | sortBy: 'priority'"
-          class="task-container my-3 me-3">
+          class="task-container my-3">
 
 
           <div class="px-3 py-3 d-flex row mx-0 mobile-categories">
@@ -59,13 +59,13 @@
 
 
 
-          <div class="row px-3 py-3">
+          <div class="row px-3 py-3 mobile-change">
             <div class="col d-flex flex-column">
               <span class="color">Upcoming Deadline</span>
               <span>{{task['task'].date | date:'MMMM d, y'}}</span>
             </div>
 
-            <div class="col d-flex flex-column align-items-end mobile-change">
+            <div class="row col d-flex align-items-end">
               <div class="d-flex align-items-center flex-column">
                 <span class="color">Priority</span>
                 <mat-icon class="urgent-priority" *ngIf="task['task'].priority == 'Urgent'">
@@ -87,13 +87,13 @@
   </div>
 
 
-  <div class="mt-5 column-container d-flex flex-column align-items-center row">
+  <div class="mt-2rem column-container d-flex flex-column align-items-center row">
     <h1 [class.noTodo]="taskService.allTaskInProgress == 0">In Progress</h1>
     <div class="height">
       <div class="board-container d-flex">
         <div (click)="openDialog(task)"
           *ngFor="let task of allTasks$ | async | taskFilter:taskService.findInProgressTask | searchfilter:searchTodo | sortBy: 'priority'"
-          class="task-container my-3 me-3">
+          class="task-container my-3">
 
 
           <div class="px-3 py-3 d-flex row mx-0 mobile-categories">
@@ -123,13 +123,13 @@
             <span class="col wrap-text">{{task['task'].description}}</span>
           </div>
 
-          <div class="row px-3 py-3">
+          <div class="row px-3 py-3 mobile-change">
             <div class="col d-flex flex-column">
               <span class="color">Upcoming Deadline</span>
               <span>{{task['task'].date | date:'MMMM d, y'}}</span>
             </div>
 
-            <div class="col d-flex flex-column align-items-end mobile-change">
+            <div class="row col d-flex align-items-end">
               <div class="d-flex align-items-center flex-column">
                 <span class="color">Priority</span>
                 <mat-icon class="urgent-priority" *ngIf="task['task'].priority == 'Urgent'">
@@ -150,13 +150,13 @@
     </div>
   </div>
 
-  <div class="mt-5 column-container d-flex flex-column align-items-center row">
+  <div class="mt-2rem column-container d-flex flex-column align-items-center row">
     <h1 [class.noTodo]="taskService.allTaskAwaitingFeedback == 0">Awaiting Feedback</h1>
     <div class="height">
       <div class="board-container d-flex">
         <div (click)="openDialog(task)"
           *ngFor="let task of allTasks$ | async | taskFilter:taskService.findAwatingFeedbackTask | searchfilter:searchTodo | sortBy: 'priority'"
-          class="task-container my-3 me-3">
+          class="task-container my-3">
 
 
           <div class="px-3 py-3 d-flex row mx-0 mobile-categories">
@@ -186,13 +186,13 @@
             <span class="col wrap-text">{{task['task'].description}}</span>
           </div>
 
-          <div class="row px-3 py-3">
+          <div class="row px-3 py-3 mobile-change">
             <div class="col d-flex flex-column">
               <span class="color">Upcoming Deadline</span>
               <span>{{task['task'].date | date:'MMMM d, y'}}</span>
             </div>
 
-            <div class="col d-flex flex-column align-items-end mobile-change">
+            <div class="row col d-flex align-items-end">
               <div class="d-flex align-items-center flex-column">
                 <span class="color">Priority</span>
                 <mat-icon class="urgent-priority" *ngIf="task['task'].priority == 'Urgent'">
@@ -213,13 +213,13 @@
     </div>
   </div>
 
-  <div class="mt-5 column-container d-flex flex-column align-items-center row">
+  <div class="mt-2rem column-container d-flex flex-column align-items-center row">
     <h1 [class.noTodo]="taskService.allTaskDone == 0">Done</h1>
     <div class="height">
       <div class="board-container d-flex">
         <div (click)="openDialog(task)"
           *ngFor="let task of allTasks$ | async | taskFilter:taskService.findDoneTask | searchfilter:searchTodo | sortBy: 'priority'"
-          class="task-container my-3 me-3">
+          class="task-container my-3">
 
 
           <div class="px-3 py-3 d-flex row mx-0 mobile-categories">
@@ -249,13 +249,13 @@
             <span class="col wrap-text">{{task['task'].description}}</span>
           </div>
 
-          <div class="row px-3 py-3">
+          <div class="row px-3 py-3 mobile-change">
             <div class="col d-flex flex-column">
               <span class="color">Upcoming Deadline</span>
               <span>{{task['task'].date | date:'MMMM d, y'}}</span>
             </div>
 
-            <div class="col d-flex flex-column align-items-end mobile-change">
+            <div class="row col d-flex align-items-end">
               <div class="d-flex align-items-center flex-column">
                 <span class="color">Priority</span>
                 <mat-icon class="urgent-priority" *ngIf="task['task'].priority == 'Urgent'">

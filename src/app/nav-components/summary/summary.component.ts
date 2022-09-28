@@ -52,8 +52,6 @@ export class SummaryComponent implements OnInit {
   currentDayTime() {
     const date = new Date();
     const hours = date.getHours();
-    console.log(hours);
-
 
     if (hours >= 6 && hours < 12) {
       this.currentTime = 'Good morning'

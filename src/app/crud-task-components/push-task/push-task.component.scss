@@ -4,10 +4,3 @@ $colorLight: rgb(41, 171, 226);
 .btn-design {
   background-color: $colorDark;
 }
-
-@media(max-width: 450px) {
-  .mobile {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-}

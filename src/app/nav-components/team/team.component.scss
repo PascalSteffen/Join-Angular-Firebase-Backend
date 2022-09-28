@@ -21,7 +21,18 @@ $colorLight: rgb(41, 171, 226);
 }
 
 .top-container {
-  margin-top: 0
+  margin: 0;
+  padding-left: 0 !important;
+  margin-top: -14px;
+
+  .headline {
+    padding-left: 0;
+  }
+
+  .input-container {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
 }
 
 .main-content {
@@ -30,6 +41,7 @@ $colorLight: rgb(41, 171, 226);
 
 .team-container {
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   max-width: 400px;
   border-radius: 10px;
   overflow-x: hidden;
@@ -84,6 +96,17 @@ $colorLight: rgb(41, 171, 226);
 
   .main-content {
     justify-content: center;
+  }
+}
+
+@media(max-width: 827px) {
+  .team-container-child {
+    justify-content: center;
+    text-align: center;
+  }
+
+  mat-icon {
+    width: auto !important;
   }
 }
 

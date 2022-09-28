@@ -3,6 +3,7 @@ $colorLight: rgb(41, 171, 226);
 
 mat-drawer-container {
   position: unset;
+  background: rgb(246, 247, 248) !important;
 }
 
 .sidenav {
@@ -63,7 +64,7 @@ mat-drawer-container {
     justify-content: space-between;
     width: 100%;
     padding: 16px 100px;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     button {
       background-color: $colorLight;

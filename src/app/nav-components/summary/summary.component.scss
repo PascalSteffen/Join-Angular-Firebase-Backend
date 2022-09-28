@@ -14,7 +14,6 @@ $colorLight: rgb(41, 171, 226);
 }
 
 .head-container {
-  margin-top: 16px;
   display: flex;
   align-items: center;
 
@@ -67,6 +66,7 @@ $colorLight: rgb(41, 171, 226);
   border-radius: 25px;
   border: 1px solid lightgray;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   h1 {
     margin: 0;
@@ -91,6 +91,7 @@ $colorLight: rgb(41, 171, 226);
 }
 
 .second-row-container {
+  width: 100%;
   margin-right: 0 !important;
   min-height: 150px;
   max-height: auto;
@@ -101,6 +102,7 @@ $colorLight: rgb(41, 171, 226);
   transform: scale(1);
   border: 1px solid lightgray;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   .child-1 {
 
@@ -166,6 +168,7 @@ $colorLight: rgb(41, 171, 226);
     transition: all 225ms ease-in-out;
     transform: scale(1);
     border: 1px solid lightgray;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
     &:hover {
       color: white;
