@@ -140,15 +140,23 @@ $colorLight: rgb(41, 171, 226);
     transform: scale(1.1);
   }
 
-  mat-icon {
+  button {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: red !important;
     width: 60px;
-    height: 100px;
-    color: red;
-    font-size: 80px !important;
+    height: 60px;
+    box-shadow: none;
+
+    mat-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
   }
+
 
   .border-right {
     border-right: 1px solid lightgray;
@@ -175,13 +183,39 @@ $colorLight: rgb(41, 171, 226);
       transition: all 225ms ease-in-out;
       background-color: $colorDark;
       transform: scale(1.065);
+
+      button {
+        background-color: white !important;
+        transition: all 225ms ease-in-out;
+
+        mat-icon {
+          color: black;
+          transition: all 225ms ease-in-out;
+        }
+
+      }
     }
 
-    mat-icon {
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $colorDark;
+      width: auto;
       width: 60px;
-      height: 100px;
-      color: $colorLight;
-      font-size: 80px !important;
+      height: 60px;
+      box-shadow: none;
+      transition: all 225ms ease-in-out;
+
+      mat-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        width: auto;
+        height: auto;
+        transition: all 225ms ease-in-out;
+      }
     }
 
   }
@@ -292,6 +326,10 @@ input:-webkit-autofill:active {
   .main-content {
     max-width: unset !important;
     margin-left: 1.5rem;
+  }
+
+  .child-2 {
+    flex-direction: column-reverse !important;
   }
 }
 

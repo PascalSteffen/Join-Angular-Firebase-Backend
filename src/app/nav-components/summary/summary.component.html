@@ -40,16 +40,18 @@
     </div>
 
     <div class="my-3 row second-row-container">
-      <div class="col d-flex align-items-center justify-content-center border-right child-1">
+      <div class="col d-flex align-items-center justify-content-center border-right child-1 my-2">
         <div>
-          <mat-icon>keyboard_double_arrow_up</mat-icon>
+          <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+            <mat-icon>keyboard_double_arrow_up</mat-icon>
+          </button>
         </div>
         <div class="d-flex align-items-center flex-column">
           <h1>{{taskService.priorityUrgent}}</h1>
           <span>Urgent</span>
         </div>
       </div>
-      <div class="col d-flex align-items-center justify-content-center child-2">
+      <div class="col d-flex align-items-center justify-content-center child-2 my-2">
         <div class="d-flex flex-column align-items-center">
           <h3 *ngIf="taskService.nextImportantDate[0]">{{taskService.nextImportantDate[0] | date:'MMMM d, y'}}</h3>
           <h3 *ngIf="!taskService.nextImportantDate[0]">-</h3>
@@ -60,14 +62,18 @@
 
     <div class="third-row-container row">
       <div class="child-1 d-flex justify-content-center align-items-center me-4 my-3 col">
-        <mat-icon class="d-flex justify-content-center align-items-center">edit_note</mat-icon>
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+          <mat-icon>edit</mat-icon>
+        </button>
         <div class="child-2 d-flex flex-column align-items-center">
           <h1>{{taskService.allTaskTodo}}</h1>
           <span>Todo</span>
         </div>
       </div>
       <div class="child-1 d-flex justify-content-center align-items-center me-4 my-3 col">
-        <mat-icon class="d-flex justify-content-center align-items-center">done_all</mat-icon>
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+          <mat-icon>done</mat-icon>
+        </button>
         <div class="child-2 d-flex flex-column align-items-center ">
           <h1>{{taskService.allTaskDone}}</h1>
           <span>Done</span>

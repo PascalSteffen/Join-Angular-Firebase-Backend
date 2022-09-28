@@ -68,7 +68,7 @@
       <div *ngFor="let currentUser of allUsers$ | async">
         <div *ngIf="user.uid == currentUser['userId']" class="d-flex buttons">
 
-          <div>
+          <div matTooltip="Only for management">
             <button class="me-3 tablet-button" [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']"
               mat-flat-button color="warn" (click)="openDeleteDialog()" mat-dialog-close>
               <mat-icon class="me-2">delete</mat-icon>Delete
@@ -99,44 +99,48 @@
               <mat-icon>arrow_forward</mat-icon>
             </button>
 
-            <button class="btn-design tablet-button"
-              [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
-              *ngIf="task.awaitingFeedback == true" mat-button (click)="openPushtoNextDialog()"
-              [mat-dialog-close]="true" cdkFocusInitial color="primary">
-              <mat-icon class="me-2">arrow_forward</mat-icon>Push to Done
-            </button>
-            <button class="btn-design mobile-button"
-              [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
-              *ngIf="task.awaitingFeedback == true" mat-button (click)="openPushtoNextDialog()"
-              [mat-dialog-close]="true" cdkFocusInitial color="primary">
-              <mat-icon>arrow_forward</mat-icon>
-            </button>
+            <div matTooltip="Only for management">
+              <button class="btn-design tablet-button"
+                [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
+                *ngIf="task.awaitingFeedback == true" mat-button (click)="openPushtoNextDialog()"
+                [mat-dialog-close]="true" cdkFocusInitial color="primary">
+                <mat-icon class="me-2">arrow_forward</mat-icon>Push to Done
+              </button>
+              <button class="btn-design mobile-button"
+                [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
+                *ngIf="task.awaitingFeedback == true" mat-button (click)="openPushtoNextDialog()"
+                [mat-dialog-close]="true" cdkFocusInitial color="primary">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
 
-            <button class="btn-design tablet-button"
-              [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
-              *ngIf="task.done == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
-              cdkFocusInitial color="primary">
-              <mat-icon class="me-2">arrow_forward</mat-icon>Push to History
-            </button>
-            <button class="btn-design mobile-button"
-              [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
-              *ngIf="task.done == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
-              cdkFocusInitial color="primary">
-              <mat-icon>arrow_forward</mat-icon>
-            </button>
+            <div matTooltip="Only for management">
+              <button class="btn-design tablet-button"
+                [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
+                *ngIf="task.done == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
+                cdkFocusInitial color="primary">
+                <mat-icon class="me-2">arrow_forward</mat-icon>Push to History
+              </button>
+              <button class="btn-design mobile-button"
+                [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
+                *ngIf="task.done == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
+                cdkFocusInitial color="primary">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
 
-            <button class="btn-design tablet-button"
-              [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
-              *ngIf="task.history == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
-              cdkFocusInitial color="primary">
-              <mat-icon class="me-2">arrow_forward</mat-icon>Push to Board
-            </button>
-            <button class="btn-design mobile-button"
-              [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
-              *ngIf="task.history == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
-              cdkFocusInitial color="primary">
-              <mat-icon>arrow_forward</mat-icon>
-            </button>
+              <button class="btn-design tablet-button"
+                [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
+                *ngIf="task.history == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
+                cdkFocusInitial color="primary">
+                <mat-icon class="me-2">arrow_forward</mat-icon>Push to Board
+              </button>
+              <button class="btn-design mobile-button"
+                [disabled]="user.uid == currentUser['userId'] && !currentUser['admin']" mat-flat-button
+                *ngIf="task.history == true" mat-button (click)="openPushtoNextDialog()" [mat-dialog-close]="true"
+                cdkFocusInitial color="primary">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
       </div>
