@@ -1,13 +1,21 @@
 $colorDark: rgb(42, 54, 71);
 $colorLight: rgb(41, 171, 226);
 
+.logo-animation {
+  position: absolute;
+  animation: logo 2.5s ease-in-out;
+  opacity: 0;
+  transform: scale(0);
+}
+
 .sign-in-flex {
+  position: relative;
   padding: 0 16px;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(246, 247, 248);
+  background-color: rgba(246, 247, 248, 1);
 
   .sign-in-container {
     display: flex;
@@ -18,6 +26,8 @@ $colorLight: rgb(41, 171, 226);
     min-height: 400px;
     background-color: white;
     border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    animation: background-animation 3.5s ease-in-out;
 
     .form-class {
       display: flex;
@@ -37,6 +47,7 @@ $colorLight: rgb(41, 171, 226);
       &:hover {
         color: $colorDark;
         transition: all 225ms ease-in-out;
+
       }
 
     }
@@ -45,6 +56,55 @@ $colorLight: rgb(41, 171, 226);
 
 .submit-btn-design {
   background-color: $colorDark;
+}
+
+@keyframes logo {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  75% {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes background-animation {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 ::ng-deep {

@@ -9,6 +9,25 @@ button {
   }
 }
 
+.form-container {
+  width: 300px;
+
+  mat-form-field {
+    height: 100% !important;
+  }
+
+  textarea {
+    height: 150px;
+  }
+}
+
+@media(max-width: 450px) {
+  .form-container {
+    width: 100% !important;
+    text-align: center;
+  }
+}
+
 
 ::ng-deep {
 

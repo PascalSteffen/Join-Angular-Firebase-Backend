@@ -32,6 +32,15 @@ $colorLight: rgb(41, 171, 226);
       border-radius: 10px;
       padding: 16px;
       word-wrap: break-word;
+      transition: all 225ms ease-in-out;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $colorDark;
+        color: white;
+        transition: all 225ms ease-in-out;
+      }
     }
 
     h3 {

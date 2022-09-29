@@ -57,6 +57,7 @@ import { CreateTicketComponent } from './crud-ticket-components/create-ticket/cr
 import { TicketPipe } from './shared/pipes/sort-pipes/ticket.pipe';
 import { TicketChatComponent } from './crud-ticket-components/ticket-chat/ticket-chat.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { DeleteChatMessageComponent } from './crud-ticket-components/delete-chat-message/delete-chat-message.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     CreateTicketComponent,
     TicketPipe,
     TicketChatComponent,
+    DeleteChatMessageComponent,
   ],
   imports: [
     BrowserModule,

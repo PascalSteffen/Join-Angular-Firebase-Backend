@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth-service/auth.service';
 import { FirebaseService } from 'src/app/shared/services/firebase-service/firebase.service';
 import { TicketService } from 'src/app/shared/services/ticket-service/ticket.service';
+import { UtilityServiceService } from 'src/app/shared/services/utility-service/utility-service.service';
+import { DeleteChatMessageComponent } from '../delete-chat-message/delete-chat-message.component';
 
 @Component({
   selector: 'app-ticket-chat',
@@ -21,7 +23,7 @@ export class TicketChatComponent implements OnInit {
 
   public allUsers$: Observable<DocumentData[]>
   ticket: any = this.ticketService.ticketDefault();
-  allChatMessages: any = [];
+  allChatMessages: Object[] = [];
   ticketId: string;
   newMessage: string;
   currentDate = new Date().getTime();
@@ -33,7 +35,8 @@ export class TicketChatComponent implements OnInit {
     public ticketService: TicketService,
     public authService: AuthService,
     public dialog: MatDialog,
-    public firestore: Firestore) { }
+    public firestore: Firestore,
+    public utilityService: UtilityServiceService) { }
 
 
   ngOnInit(): void {
@@ -67,6 +70,7 @@ export class TicketChatComponent implements OnInit {
    * get all messages from DB.
    */
   async messageIteration() {
+    this.allChatMessages = [];
     for (let i = 0; i < this.ticket['messages'].length; i++) {
       const allMessages = this.ticket['messages'][i];
       this.allChatMessages.push(allMessages)
@@ -111,8 +115,27 @@ export class TicketChatComponent implements OnInit {
     } catch (err) { }
   }
 
+
   ngAfterViewChecked() {
     this.scrollToBottom();
+  }
+
+
+  showNoYourMessageAlert() {
+    this.utilityService.alert('You can only delete your own messages.', 5000);
+  }
+
+
+  openDeleteMessageDialog(message: Object) {
+    const dialogRef = this.dialog.open(DeleteChatMessageComponent);
+    dialogRef.componentInstance.message = message;
+    dialogRef.componentInstance.ticket = this.ticket;
+    dialogRef.componentInstance.ticketId = this.ticketId;
+    dialogRef.componentInstance.currentDate = this.currentDate;
+    dialogRef.afterClosed().subscribe(async (result) => {
+      await this.getTicket();
+      this.messageIteration();
+    });
   }
 
 }

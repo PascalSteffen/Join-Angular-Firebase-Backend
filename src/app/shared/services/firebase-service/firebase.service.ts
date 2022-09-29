@@ -251,7 +251,7 @@ export class FirebaseService {
         'assignTo': ticket.assignTo
       }
     }).then(() => {
-      this.utilityService.alert('Message sent successfully.', 5000);
+      this.utilityService.alert('Messages have been updated successfully.', 5000);
     });
   }
 
