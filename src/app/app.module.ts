@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SummaryComponent } from './nav-components/summary/summary.component';
 import { BoardComponent } from './nav-components/board/board.component';
-import { AddTaskComponent } from './crud-task-components/add-task/add-task.component';
+import { AddTaskComponent } from './nav-components/add-task/add-task.component';
 import { ImprintComponent } from './nav-components/imprint/imprint.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore, Firestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { TaskFilterPipe } from './shared/pipes/filter-pipes/task-filter.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -58,6 +58,14 @@ import { TicketPipe } from './shared/pipes/sort-pipes/ticket.pipe';
 import { TicketChatComponent } from './crud-ticket-components/ticket-chat/ticket-chat.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DeleteChatMessageComponent } from './crud-ticket-components/delete-chat-message/delete-chat-message.component';
+import { CalendarComponent } from './nav-components/calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { AddCalendarEventComponent } from './crud-calendarEvent-components/add-calendar-event/add-calendar-event.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { EventDetailComponent } from './crud-calendarEvent-components/event-detail/event-detail.component';
+import { ShowAllCalendarEventsComponent } from './crud-calendarEvent-components/show-all-calendar-events/show-all-calendar-events.component';
+import { DeleteCalendarEventComponent } from './crud-calendarEvent-components/delete-calendar-event/delete-calendar-event.component';
 
 @NgModule({
   declarations: [
@@ -87,9 +95,15 @@ import { DeleteChatMessageComponent } from './crud-ticket-components/delete-chat
     TicketPipe,
     TicketChatComponent,
     DeleteChatMessageComponent,
+    CalendarComponent,
+    AddCalendarEventComponent,
+    EventDetailComponent,
+    ShowAllCalendarEventsComponent,
+    DeleteCalendarEventComponent,
   ],
   imports: [
     BrowserModule,
+    MatRadioModule,
     MatBadgeModule,
     MatCardModule,
     MatSnackBarModule,
@@ -117,7 +131,11 @@ import { DeleteChatMessageComponent } from './crud-ticket-components/delete-chat
     AngularFireDatabaseModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

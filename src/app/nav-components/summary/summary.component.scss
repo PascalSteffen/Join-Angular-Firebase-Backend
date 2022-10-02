@@ -1,6 +1,7 @@
 $colorDark: rgb(42, 54, 71);
 $colorLight: rgb(41, 171, 226);
 
+
 .loading-position {
   display: flex;
   align-items: center;
@@ -13,7 +14,8 @@ $colorLight: rgb(41, 171, 226);
 
 }
 
-.head-container {
+.top-container {
+  margin-top: 1px;
   display: flex;
   align-items: center;
 

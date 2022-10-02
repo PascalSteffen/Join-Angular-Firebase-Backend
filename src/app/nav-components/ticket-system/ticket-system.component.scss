@@ -63,6 +63,22 @@ mat-card {
   }
 }
 
+.mobile-headline-design {
+  font-weight: bold;
+  max-width: 125px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+@media(min-width: 1136px) {
+  .mobile-design-mode {
+    display: none;
+  }
+}
+
 @media(max-width: 1135px) {
 
   .top-container {
@@ -79,14 +95,42 @@ mat-card {
     display: none;
   }
 
-  .mobile {
+  .mobile-design-mode {
+    display: unset;
+  }
+
+  .table-design-mode {
     display: none;
   }
 
 }
 
-@media(max-width: 400px) {
-  .assignTo {
+/* @media(min-width: 769px) {
+  .mobile-design-mode {
     display: none;
+  }
+} */
+
+
+@media(max-width: 768px) {
+  .mobile-design-mode {
+    display: unset;
+  }
+
+  .table-design-mode {
+    display: none;
+  }
+
+  .ticket-content-container {
+    width: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 500px;
+  }
+}
+
+@media(max-width: 375px) {
+  .ticket-content-container {
+    width: 200px;
   }
 }

@@ -11,11 +11,13 @@ import { UtilityServiceService } from '../utility-service/utility-service.servic
 
 export class FirebaseService {
   private allUsers$ = new BehaviorSubject<DocumentData[]>([]);
-  private usersFromFirebase$: Observable<DocumentData[]>
+  private usersFromFirebase$: Observable<DocumentData[]>;
   private allTasks$ = new BehaviorSubject<DocumentData[]>([]);
-  private tasksFromFirebase$: Observable<DocumentData[]>
+  private tasksFromFirebase$: Observable<DocumentData[]>;
   private allTickets$ = new BehaviorSubject<DocumentData[]>([]);
-  private ticketsFromFirebase$: Observable<DocumentData[]>
+  private ticketsFromFirebase$: Observable<DocumentData[]>;
+  private allCalendarEvents$ = new BehaviorSubject<DocumentData[]>([]);
+  private calendarEventsFromFirebase$: Observable<DocumentData[]>;
 
   constructor(public firestore: Firestore, public router: Router, public authService: AuthService, public utilityService: UtilityServiceService) { }
 
@@ -64,6 +66,26 @@ export class FirebaseService {
    * subscribe all Tickets from Firebase.
    */
   public initAllTickets(): void {
+    const coll = collection(this.firestore, 'events');
+    this.calendarEventsFromFirebase$ = collectionData(coll, { idField: "eventId" });
+    this.calendarEventsFromFirebase$.subscribe((allEvents) => {
+      this.allCalendarEvents$.next(allEvents);
+    })
+  }
+
+
+  public getAllCalendarEvents(): Observable<DocumentData[]> {
+    return this.allCalendarEvents$;
+  }
+
+
+  /*******************************************************************************************************************************************************************/
+
+
+  /**
+   * subscribe all Tickets from Firebase.
+   */
+  public initAllCalendarEvents(): void {
     const coll = collection(this.firestore, 'tickets');
     this.ticketsFromFirebase$ = collectionData(coll, { idField: "ticketId" });
     this.ticketsFromFirebase$.subscribe((allTickets) => {
@@ -77,9 +99,7 @@ export class FirebaseService {
   }
 
 
-  /*******************************************************************************************************************************************************************/
-
-
+  /************************************************************************************TASK-ACTION********************************************************************/
   /**
   * save a new task to the DB.
   *
@@ -183,6 +203,7 @@ export class FirebaseService {
   }
 
 
+  /************************************************************************************ADMIN-ACTION********************************************************************/
   /**
    * set an admin by the userId
    * @param userId
@@ -213,6 +234,7 @@ export class FirebaseService {
   }
 
 
+  /************************************************************************************TICKET-ACTION********************************************************************/
   /**
   * save a new ticket to the DB.
   *
@@ -288,6 +310,43 @@ export class FirebaseService {
     await deleteDoc(docRef).then(() => {
       this.utilityService.alert('Ticket closed successfully.', 5000)
       this.router.navigate(['tickets']);
+    });
+  }
+
+
+  /************************************************************************************EVENT-ACTION********************************************************************/
+  /**
+  * save a new event to the DB.
+  *
+  */
+  saveCalendarEvent(event: any, startDate: Date, currentUser: string, endDate: Date) {
+    event.startDate = startDate.getTime();
+    event.endDate = endDate.getTime();
+    const coll = collection(this.firestore, 'events');
+    addDoc(coll, {
+      event: {
+        'title': event.title,
+        'from': currentUser,
+        'color': event.color,
+        'startDate': event.startDate,
+        'endDate': event.endDate
+      }
+    }).then(() => {
+      this.utilityService.alert('Calendar event created successfully.', 5000);
+    });
+  }
+
+
+  /**
+  * delete the current event.
+  *
+  */
+  async deleteEvent(eventId: string) {
+    const coll = collection(this.firestore, 'events');
+    const docRef = doc(coll, eventId);
+    await deleteDoc(docRef).then(() => {
+      this.utilityService.alert('Event was successfully deleted.', 5000);
+      this.router.navigate(['calendar']);
     });
   }
 

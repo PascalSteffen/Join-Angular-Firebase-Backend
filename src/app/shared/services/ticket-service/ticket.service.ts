@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class TicketService {
+
   allTicketsLength: number;
   currentDate = new Date().getTime();
 

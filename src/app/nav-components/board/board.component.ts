@@ -14,7 +14,7 @@ import { TaskDetailComponent } from '../../crud-task-components/task-detail/task
 
 export class BoardComponent implements OnInit {
 
-  public allTasks$: Observable<DocumentData[]>
+  public allTasks$: Observable<DocumentData[]>;
   date: number;
   searchTodo: string;
   loading: boolean = false;

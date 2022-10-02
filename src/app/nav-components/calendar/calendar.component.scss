@@ -1,0 +1,84 @@
+$colorDark: rgb(42, 54, 71);
+$colorLight: rgb(41, 171, 226);
+
+.top-container {
+  margin-top: -8px;
+
+  h1 {
+    font: 30px/50px Roboto, "Helvetica Neue", sans-serif;
+  }
+}
+
+.calendar-container {
+  border: 1px solid lightgray;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+::ng-deep {
+
+  .cal-month-view,
+  .cal-week-view {
+    background-color: #fff;
+    height: 550px;
+    overflow: auto;
+  }
+}
+
+.cal-month-view {
+  background-color: #fff;
+  overflow-x: auto;
+}
+
+.cal-month-view {
+  background-color: rgb(22, 22, 22) !important;
+}
+
+.cal-month-view .cal-days .cal-cell-row {
+  border-bottom: 1px solid;
+  flex-direction: column !important;
+}
+
+.btn-primary {
+  background-color: $colorDark  !important;
+  border-color: $colorDark  !important;
+  margin-left: 0 !important;
+
+  &:hover {
+    background-color: $colorLight  !important;
+    border-color: $colorLight  !important;
+  }
+}
+
+.btn-outline-secondary {
+  background-color: $colorLight  !important;
+  border-color: $colorLight  !important;
+  color: white;
+  margin-left: 0 !important;
+
+  &:hover {
+    margin-left: 0 !important;
+    background-color: white !important;
+    border-color: white !important;
+    color: black;
+  }
+}
+
+.headline {
+  h3 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+@media(max-width: 1080px) {
+  .control-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-container {
+    text-align: center;
+    flex-direction: column;
+  }
+}

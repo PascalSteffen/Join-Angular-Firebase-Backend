@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddTaskComponent } from './crud-task-components/add-task/add-task.component';
+import { AddTaskComponent } from './nav-components/add-task/add-task.component';
 import { BoardComponent } from './nav-components/board/board.component';
 import { ImprintComponent } from './nav-components/imprint/imprint.component';
 import { PrivacyComponent } from './nav-components/privacy/privacy.component';
@@ -13,6 +13,7 @@ import { AuthReverseGuard } from './shared/guard/auth-reverse.guard';
 import { TeamComponent } from './nav-components/team/team.component';
 import { TicketSystemComponent } from './nav-components/ticket-system/ticket-system.component';
 import { TicketChatComponent } from './crud-ticket-components/ticket-chat/ticket-chat.component';
+import { CalendarComponent } from './nav-components/calendar/calendar.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/sign-in' },
@@ -21,6 +22,7 @@ const routes: Routes = [
 
   { path: 'summary', component: SummaryComponent, canActivate: [AuthGuard] },
   { path: 'board', component: BoardComponent, canActivate: [AuthGuard] },
+  { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
   { path: 'add-task', component: AddTaskComponent, canActivate: [AuthGuard] },
   { path: 'task-history', component: TaskHistoryComponent, canActivate: [AuthGuard] },
   { path: 'team', component: TeamComponent, canActivate: [AuthGuard] },

@@ -19,7 +19,7 @@ import { UtilityServiceService } from 'src/app/shared/services/utility-service/u
 export class TicketSystemComponent implements OnInit {
 
   public allTickets$: Observable<DocumentData[]>;
-  public allUsers$: Observable<DocumentData[]>
+  public allUsers$: Observable<DocumentData[]>;
   name: string;
   currentTicketNumber: number = 1;
   loading: boolean = false;

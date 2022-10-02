@@ -16,8 +16,11 @@ import { EditUserComponent } from '../user-components/edit-user/edit-user.compon
 
 export class MainContentComponent implements OnInit {
 
-  public allUsers$: Observable<DocumentData[]>
-  public allTickets$: Observable<DocumentData[]>
+  public allUsers$: Observable<DocumentData[]>;
+  public allTickets$: Observable<DocumentData[]>;
+  public allCalendarEvents$: Observable<DocumentData[]>;
+  public allTasks$: Observable<DocumentData[]>;
+
   showFiller = false;
 
   constructor(public authService: AuthService,
@@ -28,8 +31,15 @@ export class MainContentComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.allCalendarEvents$ = this.firebaseService.getAllCalendarEvents();
+    this.firebaseService.initAllCalendarEvents();
+
     this.allUsers$ = this.firebaseService.getAllUsers();
     this.firebaseService.initAllUsers();
+
+    this.allTasks$ = this.firebaseService.getAllTasks();
+    this.firebaseService.initAllTasks();
+
     this.allTickets$ = this.firebaseService.getAllTickets();
     this.allTickets$.subscribe(allTickets => {
       this.ticketService.allTicketsLength = allTickets.length

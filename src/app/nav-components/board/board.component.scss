@@ -38,7 +38,6 @@ $colorLight: rgb(41, 171, 226);
 
   .column-container {
     height: calc(100vh - 300px);
-
     padding-top: 1.5rem;
     width: 350px;
     flex-wrap: wrap;
@@ -46,6 +45,7 @@ $colorLight: rgb(41, 171, 226);
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
 
     h1 {
       text-align: center;
