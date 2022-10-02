@@ -87,11 +87,6 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  setView(view: CalendarView) {
-    this.view = view;
-  }
-
-
   /**
    * show current day with all events.
    * @param param0
@@ -103,6 +98,11 @@ export class CalendarComponent implements OnInit {
       const dialogRef = this.dialog.open(EventDetailComponent);
       dialogRef.componentInstance.calendarEvent = events;
     }
+  }
+
+
+  setView(view: CalendarView) {
+    this.view = view;
   }
 
 

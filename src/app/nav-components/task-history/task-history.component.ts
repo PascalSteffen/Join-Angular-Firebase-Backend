@@ -15,7 +15,7 @@ export class TaskHistoryComponent implements OnInit {
   public allTasks$: Observable<DocumentData[]>;
 
   loading: boolean = false;
-  searchTodo: any;
+  searchTodo: string;
   date: number;
 
   constructor(public firebaseService: FirebaseService, public firestore: Firestore, public taskService: TaskService, public dialog: MatDialog) { }
