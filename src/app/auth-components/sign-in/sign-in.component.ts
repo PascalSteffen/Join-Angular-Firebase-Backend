@@ -8,13 +8,20 @@ import { AuthService } from 'src/app/shared/services/auth-service/auth.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
   hide = true;
-
+  username: string;
+  password: string;
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
+
+  }
+
+  registerUser() {
+
   }
 
 }

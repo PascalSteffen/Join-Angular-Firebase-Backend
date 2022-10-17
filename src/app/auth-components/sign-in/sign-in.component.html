@@ -8,7 +8,8 @@
 
       <mat-form-field class="my-2" appearance="outline">
         <mat-label>Email</mat-label>
-        <input type="email" #userEmail matInput [formControl]="emailFormControl" placeholder="Email">
+        <input type="email" #userEmail matInput [formControl]="emailFormControl" [(ngModel)]="username"
+          placeholder="Email">
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
           Please enter a valid email address
         </mat-error>
@@ -19,7 +20,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl" #userPassword required>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl" [(ngModel)]="password"
+          #userPassword required>
         <button mat-icon-button matSuffix (click)="hide = !hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
